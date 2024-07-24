@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import LocalFont from "next/font/local";
+import { cn } from "@/lib/utils";
+import { ThemeProvider } from "./_components/contexts/themeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const calSans = LocalFont({
+  src: "../public/fonts/CalSans-SemiBold.ttf",
+  variable: "--font-calsans",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +26,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={cn(inter.variable, calSans.variable)}>
+      <body
+        className={cn(
+          `bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : ""} overflow-x-hidden`,
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          // enableSystem
+          // disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
