@@ -8,6 +8,11 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ImageWithInfo } from "./_components/ImageWithInfo";
 import Balancer from "react-wrap-balancer";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 const LandingPart = () => (
   <div className="flex min-h-dvh flex-col">
@@ -43,47 +48,116 @@ const LandingPart = () => (
 );
 
 interface TagProps {
+  src?: StaticImageData;
   text: string;
+  href: string;
 }
-const Tag: React.FC<TagProps> = ({ text }) => (
-  <Link
-    href="https://www.wakfu.com/fr/mmorpg"
-    className="inline-flex items-center gap-2 rounded-md border border-neutral-500 border-opacity-35 bg-neutral-800 px-2 py-1 hover:bg-opacity-40"
-  >
-    <Image src={wakfu_logo} alt={`${text}'s logo`} width={24} height={24} />
-    {text}
-  </Link>
+const Tag: React.FC<TagProps> = ({ src, text, href }) => (
+  <HoverCard>
+    <HoverCardTrigger asChild>
+      <Link
+        href={href}
+        className="inline-flex items-center rounded border border-neutral-200 bg-neutral-50 p-1 text-sm font-bold leading-4 text-neutral-900 no-underline dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
+      >
+        {src && (
+          <span className="mr-1 inline-flex">
+            <Image src={src} alt={`${text} logomark`} width={16} height={14} />
+          </span>
+        )}
+        {text}
+      </Link>
+    </HoverCardTrigger>
+    <HoverCardContent align="center" className="h-20 w-40">
+      <div className="flex justify-between space-x-4">
+        <div className="space-y-1">
+          <p className="text-sm">
+            Open the link to land on{" "}
+            <Link
+              href={href}
+              className={cn(
+                buttonVariants({ variant: "link" }),
+                "p-0 font-bold",
+              )}
+            >
+              {text}
+            </Link>
+          </p>
+        </div>
+      </div>
+    </HoverCardContent>
+  </HoverCard>
 );
 
 const AboutPart = () => (
   <div className="flex min-h-dvh flex-col">
     <section className="flex flex-1 flex-col items-center justify-center gap-8 bg-gradient-to-tr from-black via-zinc-600/20 to-black text-lg text-foreground">
-      <h2 id="about" className="text-center">
-        <Balancer>
-          I&apos;m a passionate frontend developer with a positive outlook and a
-          dedication to community building ! I&apos;m currently building a tool
-          for <Tag text="Wakfu" /> (That is private for the moment 😇).
-        </Balancer>
-      </h2>
+      <div className="container flex flex-col justify-center sm:flex-row">
+        <span className="flex flex-col gap-4">
+          <h1 className="mb-8 text-3xl font-medium tracking-tighter">
+            So, Hey, I&apos;m Ninhache 🫡
+          </h1>
+          <h2
+            id="about"
+            className="max-w-screen-md text-justify text-lg leading-8 tracking-wide sm:text-left"
+          >
+            <Balancer>
+              I&apos;m a passionate frontend developer with a positive outlook
+              and a dedication to community building ! I&apos;m currently
+              building a tool for the{" "}
+              <Tag
+                src={wakfu_logo}
+                text="Wakfu"
+                href="https://www.wakfu.com/fr/mmorpg"
+              />{" "}
+              &apos;s community ! <br></br>(That is private for the moment 😇).
+            </Balancer>
+          </h2>
+          <h2 className="max-w-screen-md text-justify text-lg leading-8 tracking-wide sm:text-left">
+            <Balancer>
+              You can find my resume over{" "}
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Link
+                    href={"href"}
+                    className={cn(
+                      buttonVariants({ variant: "link" }),
+                      "p-0 text-lg font-bold",
+                    )}
+                  >
+                    here
+                  </Link>
+                </HoverCardTrigger>
+                <HoverCardContent align="center" className="w-auto">
+                  <div className="flex justify-between space-x-4">
+                    <div className="space-y-1">
+                      <Link
+                        href={"#"}
+                        className="group flex items-center gap-1 text-sm"
+                      >
+                        Open my resume
+                        <Icons.arrowPointingTopRight className="group-hover:-rotate-12" />
+                      </Link>
+                    </div>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>{" "}
+              !
+            </Balancer>
+          </h2>
+        </span>
 
-      <div className="flex flex-col items-center justify-end gap-4">
-        <Suspense fallback={<p>Loading good mood ...</p>}>
-          <ImageWithInfo
-            static={photo}
-            date={new Date("2022-05-13")}
-            alt="Picture of me in my bedroom smiling and having both of my thumbs up"
-            width={300}
-            height={300}
-            className="rounded-lg"
-          />
-        </Suspense>
-
-        <Button
-          className={cn(buttonVariants({ variant: "default" }), "group w-40")}
-        >
-          <Icons.arrowPointingTopRight className="transition-all duration-300 group-hover:-rotate-12" />
-          Resume
-        </Button>
+        <div className="flex flex-col items-center justify-end gap-4">
+          <Suspense fallback={<p>Loading good mood ...</p>}>
+            <ImageWithInfo
+              static={photo}
+              date={new Date("2022-05-13")}
+              alt="Photo of me in my room, smiling and giving two thumbs up"
+              width={300}
+              height={300}
+              className="rounded-lg"
+            />
+          </Suspense>
+        </div>
       </div>
     </section>
   </div>
