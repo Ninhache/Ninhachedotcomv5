@@ -36,9 +36,9 @@ export const Icons = {
       className={cn("size-5", props.className)}
     >
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
     </svg>
   ),
@@ -51,9 +51,9 @@ export const Icons = {
       className={cn("size-6", props.className)}
     >
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
     </svg>
   ),
