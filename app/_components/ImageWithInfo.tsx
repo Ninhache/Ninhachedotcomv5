@@ -28,7 +28,7 @@ export interface StaticImageData {
 }
 
 export const ImageWithInfo = (props: ImageWithInfoProps) => (
-  <div className="flex flex-col items-end justify-end gap-2">
+  <div className="relative flex flex-col items-end justify-end gap-2">
     <Image
       src={props.static.src}
       alt={props.alt}
@@ -37,24 +37,26 @@ export const ImageWithInfo = (props: ImageWithInfoProps) => (
       className={cn(props.className)}
     />
 
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <Icons.informations />
-      </HoverCardTrigger>
-      <HoverCardContent className="w-80">
-        <div className="flex justify-between space-x-4">
-          <div className="space-y-1">
-            <p className="text-sm">{props.alt}</p>
-            {props.date && (
-              <div className="flex items-center justify-end pt-2">
-                <span className="text-xs text-muted-foreground">
-                  {formatDateToDayMonth(props.date)}
-                </span>
-              </div>
-            )}
+    <div className="absolute bottom-2 right-2">
+      <HoverCard>
+        <HoverCardTrigger asChild>
+          <Icons.informations className="border-1 rounded-xl bg-black" />
+        </HoverCardTrigger>
+        <HoverCardContent align="end" className="w-80">
+          <div className="flex justify-between space-x-4">
+            <div className="space-y-1">
+              <p className="text-sm">{props.alt}</p>
+              {props.date && (
+                <div className="flex items-center justify-end pt-2">
+                  <span className="text-xs text-muted-foreground">
+                    {formatDateToDayMonth(props.date)}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </HoverCardContent>
-    </HoverCard>
+        </HoverCardContent>
+      </HoverCard>
+    </div>
   </div>
 );
