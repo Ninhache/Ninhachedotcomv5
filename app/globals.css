@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes move {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+
+.animated-svg rect {
+  stroke-dasharray: 100 1100;
+  stroke-dashoffset: 0;
+  animation: move 8s linear infinite;
+  stroke: rgb(220, 203, 17);
+  stroke-width: 2;
+  fill: none;
+  filter: url(#neon);
+}
+
+.animated-svg {
+  overflow: visible;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

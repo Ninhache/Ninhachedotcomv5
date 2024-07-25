@@ -86,6 +86,10 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        pulseText: {
+          "0%, 100%": { textShadow: "0 0 10px rgba(255, 255, 255, 0.2)" },
+          "50%": { textShadow: "0 0 20px rgba(255, 255, 255, 0.5)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -181,6 +185,7 @@ const config = {
         subtitle: "subtitle 2s forwards",
         "fade-left": "fade-left 3s ease-in-out forwards",
         "fade-right": "fade-right 3s ease-in-out forwards",
+        pulseText: "pulseText 3s 3s infinite ease-in-out",
       },
     },
   },
