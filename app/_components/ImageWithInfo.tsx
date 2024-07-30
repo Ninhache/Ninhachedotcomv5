@@ -10,11 +10,6 @@ import { cn } from "@/lib/utils";
 import { formatDateToDayMonth } from "@/lib/date";
 import Image from "next/image";
 import { Icons } from "./icons";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 
 type ImageWithInfoProps = {
   static: StaticImageData;
