@@ -1,9 +1,11 @@
+import { cn } from "@/lib/utils";
+import "@/public/styles/loading.css";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import LocalFont from "next/font/local";
-import { cn } from "@/lib/utils";
 import { ThemeProvider } from "./_components/contexts/themeProvider";
+import { Navbar } from "./_components/clients/Navbar";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +45,7 @@ export default function RootLayout({
           // enableSystem
           // disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>

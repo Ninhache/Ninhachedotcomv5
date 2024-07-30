@@ -135,7 +135,7 @@ export function Navbar({
           <MainNav />
           <MobileNav />
 
-          <nav className="flex flex-1 items-center space-x-1 justify-end">
+          <nav className="flex flex-1 items-center justify-end space-x-1">
             <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -146,7 +146,7 @@ export function Navbar({
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-10 px-0"
+                  "w-10 px-0",
                 )}
               >
                 <Icons.github className="h-4 w-4" />
@@ -157,9 +157,9 @@ export function Navbar({
           </nav>
         </div>
       </header>
-      <div className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      {/* <div className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         gaga
-      </div>
+      </div> */}
     </>
   );
 }
